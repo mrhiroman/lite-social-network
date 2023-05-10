@@ -1,0 +1,93 @@
+.layout
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .profileWindow
+        display: flex
+        flex-direction: row
+        margin-top: 40px
+
+        .leftSide
+            display: flex
+            flex-direction: column
+            //justify-content: center
+            align-items: center
+
+            .avatar
+                width: 100px
+                height: 100px
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: center
+
+                img
+                    width: 64px
+                    height: 64px
+                    border-radius: 64px
+                    border: 1px solid black
+                    object-fit: cover
+
+        .info
+            width: 428px
+            margin-top: 16px
+            margin-left: 8px
+            gap: 8px
+            display: flex
+            flex-direction: column
+
+            .name
+                font-size: 24px
+                font-weight: 600
+
+            .divisor
+                margin-top: 4px
+                margin-bottom: 10px
+                height: 1px
+                background: #2D728F
+
+            .other
+                font-size: 16px
+
+    .addPostWindow
+        margin-left: 108px
+        margin-top: 30px
+        display: flex
+        flex-direction: column
+        //align-items: center
+
+        .addPostCaption
+            font-size: 20px
+            font-weight: 600
+
+        .addPostForm
+            width: 428px
+            //align-items: center
+            gap: 8px
+            display: flex
+            flex-direction: column
+
+            textarea
+                font-family: 'Nunito Sans'
+                margin-top: 8px
+                width: 100%
+                height: 80px
+
+    .postsWindow
+        margin-top: 20px
+        width: 428px
+        margin-left: 108px
+        display: flex
+        flex-direction: column
+
+        .caption
+            font-size: 20px
+            font-weight: 600
+
+        .posts
+            margin-top: 10px
+            display: flex
+            flex-direction: column
+            gap: 30px
+            margin-bottom: 100px

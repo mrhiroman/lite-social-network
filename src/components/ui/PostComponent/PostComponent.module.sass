@@ -1,0 +1,64 @@
+.layout
+    display: flex
+    flex-direction: row
+    gap: 14px
+
+    .avatar
+        height: 36px
+        width: 36px
+        border-radius: 36px
+
+        img
+            height: 36px
+            width: 36px
+            border-radius: 36px
+            border: 1px solid black
+            object-fit: cover
+
+    .postInfo
+        display: flex
+        flex-direction: column
+
+        .author
+            font-size: 20px
+            font-weight: 500
+
+        .divisor
+            margin: 6px 0
+            height: 1px
+            background: #2D728F
+
+        .post
+            width: 350px
+
+        .image
+            margin-top: 20px
+            max-width: 350px
+            max-height: 350px
+
+            img
+                max-width: 350px
+                max-height: 350px
+                object-fit: scale-down
+
+        .postBottom
+            margin-top: 10px
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+
+            .likes
+                cursor: pointer
+                align-self: flex-end
+                display: flex
+                align-items: center
+                gap: 4px
+                font-size: 16px
+                font-weight: 500
+
+                &:hover
+                    opacity: 0.7
+
+                img
+                    height: 24px
+                    width: 24px

@@ -1,24 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { LoginPage } from './pages/LoginPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { FriendsPage } from './pages/FriendsPage';
+import { NewsPage } from './pages/NewsPage';
+import { Header } from './components/layout/Header';
+
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useAppDispatch } from './redux/store';
+import { OpenAPI, UserService } from './generated/api';
+import { setCurrentUser, setSigninState } from './redux/user/slice';
 
 function App() {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  React.useEffect(() => {
+    const token = window.localStorage.getItem("token")
+    if(token) {
+      OpenAPI.TOKEN = token
+      UserService.getApiUsersMe().then(response => {
+        dispatch(setCurrentUser(response))
+        dispatch(setSigninState(true))
+        console.log(token)
+        if(location.pathname === "/") navigate("/profile")
+      })
+      .catch(err => {
+        console.log('Token is expired, please log in again')
+      })
+    }
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <Header />
+          <Routes>
+            <Route path="/" element={<LoginPage />} /> 
+            <Route path="/profile" element={<ProfilePage />} /> 
+            <Route path="/profile/:id" element={<ProfilePage />} /> 
+            <Route path="/friends" element={<FriendsPage />} /> 
+            <Route path="/news" element={<NewsPage />} /> 
+          </Routes>
     </div>
   );
 }
