@@ -259,6 +259,82 @@
           }
         }
       },
+      "/api/posts/update/{id}": {
+        "post": {
+          "tags": [
+            "Post"
+          ],
+          "parameters": [
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostModel"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostModel"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/posts/remove/{id}": {
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
       "/api/users/login": {
         "post": {
           "tags": [
@@ -595,6 +671,13 @@
             },
             "education": {
               "type": "string",
+              "nullable": true
+            },
+            "friends": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/UserModel"
+              },
               "nullable": true
             }
           },

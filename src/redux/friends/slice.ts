@@ -1,25 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PostModel, UserModel } from '../../generated/api';
+import { UserModel } from '../../generated/api';
 
 interface FriendsState {
-    friends: Array<UserModel>
+  friends: Array<UserModel>;
 }
 
 const initialState: FriendsState = {
-    friends: []
-}
+  friends: [],
+};
 
 const friendsSlice = createSlice({
   name: 'friends',
   initialState,
   reducers: {
-    setFriends(state, action: PayloadAction<Array<UserModel>>){
-        state.friends = action.payload
+    setFriends(state, action: PayloadAction<Array<UserModel>>) {
+      state.friends = action.payload;
     },
   },
 });
 
-export const { setFriends } =
-  friendsSlice.actions
+export const { setFriends } = friendsSlice.actions;
 
-export default friendsSlice.reducer
+export default friendsSlice.reducer;
